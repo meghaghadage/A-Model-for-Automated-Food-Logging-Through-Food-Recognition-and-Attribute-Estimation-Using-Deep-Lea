@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+    <title>Calorie Tracker</title>
+    <!-- Bootstrap Styles-->
+    <link href="static/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="static/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="static/css/custom-styles.css" rel="stylesheet" />
+      <link href="static/css/imageStyle.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="static/js/Lightweight-Chart/cssCharts.css">
+
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('dashboard')}}"><center><img src="static/img/small-logo.png" height="40" alt="logo"></center></a>
+
+		              <div id="sideNav" href="">
+		                  <i class="fa fa-bars icon"></i>
+		                  </div>
+            </div>
+
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="{{url_for('update_profile')}}"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('change_pwd')}}"><i class="fa fa-gear fa-fw"></i> Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('login')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <nav class="navbar-default navbar-side" role="navigation">
+           <div class="sidebar-collapse">
+               <ul class="nav" id="main-menu">
+
+                   <li>
+                       <a href="{{url_for('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
+                   </li>
+                   <li>
+                       <a href="{{url_for('calorie_tracker')}}"><i  class="fa fa-calendar"></i> Calorie Tracker</a>
+                   </li>
+                   <li>
+                       <a href="{{url_for('food_diary')}}"><i  class="fa fa-calendar"></i> Food Diary</a>
+                   </li>
+               </ul>
+
+           </div>
+
+       </nav> -->
+       <!-- /. NAV SIDE  -->
+        <!--/. NAV TOP  -->
+        <!-- <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a class="active-menu" href="index.html"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="ui-elements.html"><i class="fa fa-desktop"></i> UI Elements</a>
+                    </li>
+
+					 <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Charts<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="chart.html">Charts JS</a>
+                            </li>
+                            <li>
+                                <a href="morris-chart.html">Morris Chart</a>
+                            </li>
+							</ul>
+						</li>
+
+                    <li>
+                        <a href="tab-panel.html"><i class="fa fa-qrcode"></i> Tabs & Panels</a>
+                    </li>
+
+                    <li>
+                        <a href="table.html"><i class="fa fa-table"></i> Responsive Tables</a>
+                    </li>
+                    <li>
+                        <a href="form.html"><i class="fa fa-edit"></i> Forms </a>
+                    </li>
+
+
+                    <li>
+                        <a href="#"><i class="fa fa-sitemap"></i> Multi-Level Dropdown<span class="fa arrow"></span></a>
+                        <ul class="nav nav-second-level">
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link</a>
+                            </li>
+                            <li>
+                                <a href="#">Second Level Link<span class="fa arrow"></span></a>
+                                <ul class="nav nav-third-level">
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Third Level Link</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="empty.html"><i class="fa fa-fw fa-file"></i> Empty Page</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav> -->
+        <!-- /. NAV SIDE  -->
+
+		<div id="page-wrapper">
+		  <div class="header">
+                        <h1 class="page-header">
+                            Calorie Tracker <small>Your daily summary</small>
+                        </h1>
+
+		</div>
+            <div id="page-inner">
+
+
+<div class="row">
+
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <div class="board col-md-3 col-sm-12 col-xs-1">
+                          <div class="panel panel-primary ">
+              <div class="number">
+                <h3>
+                  <h3>{{calorie_intake}}</h3>
+                  <small class="">Daily Calorie Intake Goal</small>
+                </h3>
+              </div>
+
+
+                          </div>
+              </div>
+
+
+              <div class="board col-md-3 col-sm-12 col-xs-1">
+                            <div class="panel panel-primary ">
+                <div class="number">
+                  <h3>
+                    <h3> - {{food_calorie}}</h3>
+                    <small class="">Food</small>
+                  </h3>
+                </div>
+
+
+                            </div>
+                </div>
+                  {% set cal = (calorie_intake - food_calorie) %}
+                  <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                          <div class="modal-content">
+                              <div class="modal-header">
+                                  <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                                  <h4 class="modal-title" id="myModalLabel">Exercise Activities</h4>
+                              </div>
+                              <div class="modal-body">
+                                <form>
+                                <div class="form-group">
+                                  <label for="cars">Choose your Exercise Activity:</label>
+                                  <select id="activity" name="activity">
+                                    <option value="bicycling">Bicycling</option>
+                                    <option value="running">Running</option>
+                                    <option value="swimming">Swimming</option>
+                                    <option value="walking">Walking</option>
+                                  </select>
+                                  <br>
+                                  <br>
+                                    <label for="caloriesburnt">Enter time of Exercise(in minutes):</label>
+                                    <input type="number" class="form-control" id="time">
+                                </div>
+                              </form>
+                              </div>
+                              <div class="modal-footer">
+                                  <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                  <button type="button" class="btn btn-primary" onclick="myFunction()">Save</button>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+
+                  <script>
+                  function myFunction() {
+
+                    var t = document.getElementById("time").value;
+                    var acti = document.getElementById("activity").value;
+                    var MET = 0;
+
+                    if(acti == "bicycling")
+                    MET = 8;
+                    else if (acti == "running")
+                    MET = 11.5;
+                    else if (acti == "swimming")
+                    MET = 10;
+                    else
+                    MET = 4;
+
+                    var weight = {{ current_user.weight }}
+                    var x = 0.0175 * MET * t * weight;
+                    x = Number(x);
+                    document.getElementById("exercise").innerHTML = "+ " + x;
+                    var y = {{ cal }};
+                    var z = Number(y) + Number(x);
+                    if(z>0){
+                      document.getElementById("remcalorie").innerHTML = "= " + z;
+                    }
+                    else{
+                      document.getElementById("zero").innerHTML = "= " + 0;
+                    }
+                  }
+                </script>
+
+                  <div class="board col-md-3 col-sm-12 col-xs-1">
+                                <div class="panel panel-primary ">
+                    <div class="number">
+                      <h3>
+                        <h3 id="exercise"> + </h3>
+                        <small class="" data-toggle="modal" data-target="#myModal">Exercise</small>
+                      </h3>
+                    </div>
+                    </div>
+                    </div>
+
+                  <div class="board col-md-3 col-sm-12 col-xs-1">
+                                <div class="panel panel-primary ">
+                    <div class="number">
+                      <h3>
+
+                        <h3 id="remcalorie">  </h3>
+                        <h3 id="zero"> </h3>
+                        <small class="">Remaining</small>
+
+                      </h3>
+                    </div>
+
+
+                                </div>
+                    </div>
+        </div>
+    </div>
+  </div>
+
+  <div class="row">
+      <div class="col-md-8 col-sm-12 col-xs-12">
+
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  Weekly Calorie Consumption Report
+              </div>
+              <div class="panel-body">
+                <canvas id="chart" width="600" height="400"></canvas>
+            <script>
+            // bar chart data
+                  var barData = {
+                    labels : [
+                      {% for item in labels %}
+                        "{{ item }}",
+                      {% endfor %}
+                    ],
+
+                    datasets : [{
+                        // fillColor: "rgba(41, 241, 195, 1)",
+                      fillColor: "rgba(123, 239, 178, 1)",
+                       // strokeColor: "rgba(151,187,205,1)",
+                       strokeColor: "rgba(0, 177, 106, 1)",
+                      pointColor: "rgba(0, 177, 106, 1)",
+                      pointStrokeColor: "#fff",
+                      pointHighlightFill: "#fff",
+                      pointHighlightStroke: "rgba(0, 177, 106, 1)",
+                      bezierCurve : false,
+                      data : [
+            	    {% for item in values %}
+                          {{ item }},
+                        {% endfor %}]
+                      }
+            	]
+                  }
+
+                  Chart.defaults.global.animationSteps = 50;
+                  Chart.defaults.global.tooltipYPadding = 16;
+                  Chart.defaults.global.tooltipCornerRadius = 0;
+                  Chart.defaults.global.tooltipTitleFontStyle = "normal";
+                  Chart.defaults.global.tooltipFillColor = "rgba(0,0,0,0.8)";
+                  Chart.defaults.global.animationEasing = "easeOutBounce";
+                  Chart.defaults.global.responsive = false;
+                  Chart.defaults.global.scaleLineColor = "black";
+                  Chart.defaults.global.scaleFontSize = 16;
+
+                  // get bar chart canvas
+                  var mychart = document.getElementById("chart").getContext("2d");
+
+                  steps = 10
+                  max = 6000
+                  // draw bar chart
+                  var LineChartDemo = new Chart(mychart).Line(barData, {
+                    scaleOverride: true,
+                    scaleSteps: steps,
+                    scaleStepWidth: Math.ceil(max / steps),
+                    scaleStartValue: 0,
+                    scaleShowVerticalLines: true,
+                    scaleShowGridLines : true,
+                    barShowStroke : true,
+                    scaleShowLabels: true,
+                    bezierCurve: false,
+            });
+
+            </script>
+
+              </div>
+          </div>
+
+      </div>
+
+      <div class="col-md-4 col-sm-12 col-xs-12">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  Your activities
+              </div>
+              <div class="panel-body">
+                  <ul class="nav nav-pills">
+                      <li class=""><a href="#2daysago" data-toggle="tab">2 Days Ago</a>
+                      </li>
+                      <li class=""><a href="#yesterday" data-toggle="tab">Yesterday</a>
+                      </li>
+                      <li class="active"><a href="#today" data-toggle="tab">Today</a>
+                      </li>
+                  </ul>
+
+                  <div class="tab-content">
+                      <div class="tab-pane fade" id="2daysago">
+                        <div class="list-group">
+
+                          {% for d in two_daysago_food %}
+                          <a href="#" class="list-group-item">
+                              <span class="badge">{{d[1]}}</span>
+                              <i class="fa fa-fw fa-comment"></i> {{d[0]}}
+                          </a>
+                            {% endfor %}
+                        </div>
+                      </div>
+
+                      <div class="tab-pane fade" id="yesterday">
+                        <div class="list-group">
+                          {% for y in yesterday_food %}
+                            <a href="#" class="list-group-item">
+                                <span class="badge">{{y[1]}}</span>
+                                <i class="fa fa-fw fa-comment"></i> {{y[0]}}
+                            </a>
+                            {% endfor %}
+                            </div>
+                      </div>
+
+                      <div class="tab-pane fade active in" id="today">
+                        <div class="list-group">
+                          {% for t in today_food %}
+                            <a href="#" class="list-group-item">
+                                <span class="badge">{{t[1]}}</span>
+                                <i class="fa fa-fw fa-comment"></i> {{t[0]}}
+                            </a>
+                            {% endfor %}
+                        </div>
+                      </div>
+
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="static/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <!-- Metis Menu Js -->
+    <script src="static/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+
+
+    <script src="static/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="static/js/morris/morris.js"></script>
+
+
+    <script src="static/js/attributes.js"></script>
+
+
+	<script src="static/js/easypiechart.js"></script>
+	<script src="static/js/easypiechart-data.js"></script>
+
+	 <script src="static/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="static/js/custom-scripts.js"></script>
+
+    <script src="static/js/line_chart.js"></script>
+
+
+    <!-- Chart Js -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <!-- <script type="text/javascript" src="static/js/Chart.min.js"></script> -->
+    <script type="text/javascript" src="static/js/chartjs.js"></script>
+
+
+</body>
+
+</html>

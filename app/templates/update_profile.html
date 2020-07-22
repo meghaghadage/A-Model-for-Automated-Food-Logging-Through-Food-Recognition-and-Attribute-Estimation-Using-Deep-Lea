@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+    <title>User Profile</title>
+    <!-- Bootstrap Styles-->
+    <link href="static/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="static/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="static/css/custom-styles.css" rel="stylesheet" />
+      <link href="static/css/imageStyle.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="static/js/Lightweight-Chart/cssCharts.css">
+
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="static/js/signup/jquery-ui/jquery-ui.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="static/css/update-style.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('dashboard')}}"><center><img src="static/img/small-logo.png" height="40" alt="logo"></center></a>
+
+		              <div id="sideNav" href="">
+		                  <i class="fa fa-bars icon"></i>
+		                  </div>
+            </div>
+
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="{{url_for('update_profile')}}"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('change_pwd')}}"><i class="fa fa-gear fa-fw"></i> Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('login')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+         <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+                  <li>
+                      <a href="{{url_for('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
+                  </li>
+                  <li>
+                      <a href="{{url_for('calorie_tracker')}}"><i  class="fa fa-calendar"></i> Calorie Tracker</a>
+                  </li>
+                  <li>
+                      <a href="{{url_for('food_diary')}}"><i  class="fa fa-calendar"></i> Food Diary</a>
+                  </li>
+                </ul>
+
+            </div>
+
+        </nav> -->
+        <!-- /. NAV SIDE  -->
+
+		<div id="page-wrapper">
+		  <div class="header">
+                        <h1 class="page-header">
+                            Update Your Profile
+                        </h1>
+
+		</div>
+            <div id="page-inner">
+              <div class="row">
+                <section class="update">
+
+                    <div class="container">
+
+                        <div class="update-content">
+                            <form action="" method="POST" id="update-form" class="update-form">
+                              <div class="form-row">
+                                <h2>Hello {{current_user.name}}, You can edit your profile here...</h2>
+                              </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                            <label for="age">Age</label>
+                            <input type="number" class="form-input" name="age" id="age" value="{{current_user.age}}" />
+                        </div>
+                        <div class="form-radio">
+                            <label for="gender">Gender</label>
+                            <div class="form-flex">
+                              {% if current_user.gender=='female' %}
+                                <input type="radio" name="gender" value="male" id="male" />
+                                <label for="male">Male</label>
+
+                                <input type="radio" name="gender" value="female" id="female" checked="checked"/>
+                                <label for="female">Female</label>
+                              {% endif %}
+
+
+                              {% if current_user.gender=='male' %}
+                                <input type="radio" name="gender" value="male" id="male" checked="checked" />
+                                <label for="male">Male</label>
+
+                                <input type="radio" name="gender" value="female" id="female" />
+                                <label for="female">Female</label>
+                              {% endif %}
+                            </div>
+                        </div>
+                      </div>
+
+                      <div class="form-row">
+                        <div class="form-group">
+                            <label for="height">Height</label>
+                            <input type="number" class="form-input" name="height" id="height" value="{{current_user.height}}" />
+                        </div>
+
+                        <div class="form-group">
+                            <label for="weight">Weight</label>
+                            <input type="number" class="form-input" name="weight" id="weight" value="{{current_user.weight}}" />
+                        </div>
+
+                      </div>
+                      <div class=form-row>
+                        <div class="form-radio">
+                            <label for="activity">Activity</label>
+                            <div class="form-flex">
+                                <input type="radio" name="activity" value="Moderate" id="moderate"
+                                {%if current_user.activity=='Moderate'%} checked="checked"{%endif%} />
+                                <label for="moderate">Moderate</label>
+
+                                <input type="radio" name="activity" value="Active" id="active"
+                                 {%if current_user.activity=='Active'%} checked="checked"{%endif%}/>
+                                <label for="active">Active</label>
+
+                                <input type="radio" name="activity" value="Inactive" id="inactive"
+                                {%if current_user.activity=='Inactive'%} checked="checked"{%endif%} />
+                                <label for="inactive">Inactive</label>
+                            </div>
+                        </div>
+                      </div>
+
+                                <div class="form-group">
+                                    <input type="submit" name="update" id="update" class="form-submit" value="Update"/>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </section>
+              </div>
+
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="static/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <!-- Metis Menu Js -->
+    <script src="static/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="static/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="static/js/morris/morris.js"></script>
+
+
+    <script src="static/js/attributes.js"></script>
+
+
+	<script src="static/js/easypiechart.js"></script>
+	<script src="static/js/easypiechart-data.js"></script>
+
+	 <script src="static/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="static/js/custom-scripts.js"></script>
+
+
+    <!-- Chart Js -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <!-- <script type="text/javascript" src="static/js/Chart.min.js"></script> -->
+    <script type="text/javascript" src="static/js/chartjs.js"></script>
+
+    <script src="static/js/signup/jquery/jquery.min.js"></script>
+    <script src="static/js/signup/jquery-ui/jquery-ui.min.js"></script>
+    <script src="static/js/signup/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="static/js/signup/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="static/js/update.js"></script>
+
+
+</body>
+
+</html>

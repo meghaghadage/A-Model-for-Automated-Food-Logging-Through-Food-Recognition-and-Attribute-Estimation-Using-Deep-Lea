@@ -1,0 +1,226 @@
+
+
+/* Screens Resolution : 992px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 1200px) {
+	
+	
+}
+
+/* Screens Resolution : 992px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 992px) {
+	
+	/* ---------------------------------
+	1. PRIMARY STYLES
+	--------------------------------- */
+
+	h1{ font-size: 4em; }
+	h2{ font-size: 3em; }
+	h3{ font-size: 2em; }
+	
+	/* ---------------------------------
+	3. MENU
+	--------------------------------- */
+	
+	header .top-menu ul.welcome-area{ padding: 0; }
+	
+	header .top-menu ul.welcome-area > li{ border: 0; }
+	
+	header .top-menu .hello-blog{ display: none; }
+	
+}
+
+
+/* Screens Resolution : 767px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 767px) {
+	
+	/* ---------------------------------
+	1. PRIMARY STYLES
+	--------------------------------- */
+
+	p{ line-height: 1.4; }
+
+	h1{ font-size: 3em; }
+	h2{ font-size: 2.5em; }
+	h3{ font-size: 1.8em; }
+	h4{ font-size: 1.5em; }
+	h5{ font-size: 1.2em; }
+	
+	/* ---------------------------------
+	2. COMMONS FOR PAGE DESIGN
+	--------------------------------- */
+
+	.section{ padding: 40px 0 10px; }
+
+	
+
+	/* ---------------------------------
+	3. MENU
+	--------------------------------- */
+	
+	header .top-menu ul.welcome-area{ display: none; }
+	
+	
+	/* SEARCH AREA */
+	
+	header .right-area{ float: none; }
+	
+	header .src-area{ float: none; border: 0; }
+	
+	
+	/* TOP MENU */
+	
+	header .top-menu ul.social-icons{ display: none; }
+	
+	/* MIDDLE AREA */
+
+	header .logo{ padding: 10px 0; height: 100px; }
+
+
+	/* BOTTOM AREA */
+	
+	header .main-menu{ text-align: left; display: none; float: none; clear: both; max-height: 400px;
+		overflow: auto; border-top: 1px solid #ccc; }
+	
+	header .main-menu > li{ display: block; float: none; border-bottom: 1px solid #ddd; }
+	
+	header .main-menu > li:last-child{ border-bottom: 0; }
+	
+	header .main-menu li > a{ display: block; line-height: 1; height: auto; padding: 15px; background: none; }
+	
+	
+	/* DROPDOWN  */
+	
+	header .main-menu li.drop-down > ul.drop-down-menu{ position: static; box-shadow: none; }
+	
+	
+	/* DROPDOWN HOVER */
+	
+	header .main-menu li.drop-down > ul.drop-down-menu li a{ padding-left: 25px; }
+	
+	header .main-menu li.drop-down > ul.drop-down-inner li a{ padding-left: 35px; }
+	
+	
+	/* SEARCH AREA */
+
+	header .src-area{ width: 100%; }
+	
+	
+	/* NAV ICON */
+	
+	.menu-nav-icon{ display: inline-block; }
+
+	
+	/* ---------------------------------
+	4. SLIDER
+	--------------------------------- */
+
+	.main-slider{ margin-top: 205px; height: calc(400px - 205px); min-height: 350px; }  
+	 
+	.main-slider .slider-content{ padding: 15px 20px!important; margin-left: 20px!important; 
+		top: 30px!important; }
+
+	.slider-content .btn{ padding: 7px 15px; }
+
+	.slider-content .title{ letter-spacing: 0px; }
+
+	
+	.main-slider .ls-nav-prev,
+	.main-slider .ls-nav-next{ display: none!important; }
+
+	
+	/* ---------------------------------
+	5. SINGLE POST
+	--------------------------------- */
+	
+	.blog-posts .single-post{ margin-bottom: 50px; }
+
+	
+	/* POST STYLE TWO */
+
+	.post-style-2 .image-wrapper{ padding-right: 0px; float: none; width: auto; max-width: 500px; }
+
+	.post-style-2 .post-details{ float: none; width: 100%; margin-top: 30px; }
+	
+	
+	/* LOAD MORE BUTTON */
+
+	.blog-posts .load-more-btn{ margin: 20px 0 60px; }
+
+	
+	/* ---------------------------------
+	6. SIDEBAR STYLING
+	--------------------------------- */
+
+	.sidebar-section{ margin-bottom: 30px; }
+
+	
+	/* ---------------------------------
+	7. FOOTER INSTAGRAM STYLING 
+	--------------------------------- */
+
+	.footer-instagram-area ul.instagram > li{ width: 25%; }
+
+	
+	/* ---------------------------------
+	8. FOOTER
+	--------------------------------- */
+	
+	footer{ padding-top: 20px; }
+	
+	footer .footer-section{ margin: 0px 0 20px; }
+
+	footer .social-icons{ text-align: left; }
+
+	footer .social-icons > li > a{ padding: 0 15px 0 0; }
+	
+	
+}
+
+/* Screens Resolution : 479px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 479px) {
+
+	/* ---------------------------------
+	1. PRIMARY STYLES
+	--------------------------------- */
+
+	body{ font-size: 14px;  }
+	
+	/* ---------------------------------
+	2. COMMONS FOR PAGE DESIGN
+	--------------------------------- */
+
+	.left-area,
+	.right-area{ float: none;  }
+
+	.width-60,
+	.width-50{ width: 100%; }
+
+	.left-area li a,
+	.right-area li a{ padding: 0 10px 0 0!important; }
+	
+	/* ---------------------------------
+	5. SINGLE POST
+	--------------------------------- */
+	
+	.single-post .icons ul.social-icons{ margin-top: 10px; }
+
+
+}
+
+/* Screens Resolution : 359px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 359px) {
+	
+	
+}
+
+/* Screens Resolution : 290px
+-------------------------------------------------------------------------- */
+@media only screen and (max-width: 290px) {
+	
+	
+}

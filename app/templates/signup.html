@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Signup</title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="static/js/signup/jquery-ui/jquery-ui.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="static/css/signup-style.css">
+
+</head>
+<body>
+        <center><img src="static/img/home-logo.png" alt=""></center>
+    <div class="main">
+
+        <section class="signup">
+
+            <div class="container">
+
+                <div class="signup-content">
+                    <form action="" method="POST" id="signup-form" class="signup-form">
+                      {% if exists %}
+                      <div class="new-message-box">
+                          <div class="new-message-box-alert">
+                              <div class="info-tab tip-icon-alert" title="error"><i></i></div>
+                                <div class="tip-box-alert">
+                                    <p>User ID already exists...
+                                        <a href="{{ url_for('login') }}">Go to login page.</a></p>
+                                </div>
+                              </div>
+                      </div>
+                      {% endif %}
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="userid">User ID</label>
+                                <input type="text" class="form-input" name="userid" id="userid" />
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-input" name="name" id="name" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                              <label for="email">Email</label>
+                              <input type="email" class="form-input" name="email" id="email"/>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="password">Password</label>
+                                <input type="password" class="form-input" name="password" id="password"/>
+                            </div>
+                            <div class="form-group">
+                                <label for="re_password">Repeat your password</label>
+                                <input type="password" class="form-input" name="re_password" id="re_password"/>
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-text">
+                            <a href="#" class="add-info-link"><i class="zmdi zmdi-chevron-right"></i>Additional info</a>
+                            <div class="add_info">
+
+                              <div class="form-row">
+                                <div class="form-group">
+                                    <label for="age">Age</label>
+                                    <input type="number" class="form-input" name="age" id="age" />
+                                </div>
+
+                                  <div class="form-radio">
+                                      <label for="gender">Gender</label>
+                                      <div class="form-flex">
+                                          <input type="radio" name="gender" value="male" id="male" checked="checked" />
+                                          <label for="male">Male</label>
+
+                                          <input type="radio" name="gender" value="female" id="female" />
+                                          <label for="female">Female</label>
+                                      </div>
+                                  </div>
+                              </div>
+
+                              <div class="form-row">
+                                <div class="form-group">
+                                    <label for="height">Height</label>
+                                    <input type="number" class="form-input" name="height" id="height" />
+                                </div>
+
+                                <div class="form-group">
+                                    <label for="weight">Weight</label>
+                                    <input type="number" class="form-input" name="weight" id="weight" />
+                                </div>
+
+                              </div>
+
+
+                                <!-- <div class="form-group">
+                                    <label for="activity">Activity</label>
+                                    <div class="select-list">
+                                        <select name="activity" id="activity" required>
+                                            <option value="moderate">Moderate</option>
+                                            <option value="active">Active</option>
+                                            <option value="inactive">Inactive</option>
+                                        </select>
+                                    </div>
+                                </div> -->
+                                <div class="form-radio">
+                                    <label for="activity">Activity</label>
+                                    <div class="form-flex">
+                                        <input type="radio" name="activity" value="Moderate" id="moderate" checked="checked" />
+                                        <label for="moderate">Moderate</label>
+
+                                        <input type="radio" name="activity" value="Active" id="active" />
+                                        <label for="active">Active</label>
+
+                                        <input type="radio" name="activity" value="Inactive" id="inactive" />
+                                        <label for="inactive">Inactive</label>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" name="signup" id="signup" class="form-submit" value="Signup"/>
+                            <br><br>
+                            <a href="{{ url_for('login') }}">IF YOU'RE ALREADY MEMBER...</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="static/js/signup/jquery/jquery.min.js"></script>
+    <script src="static/js/signup/jquery-ui/jquery-ui.min.js"></script>
+    <script src="static/js/signup/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="static/js/signup/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="static/js/signup.js"></script>
+</body>
+</html>

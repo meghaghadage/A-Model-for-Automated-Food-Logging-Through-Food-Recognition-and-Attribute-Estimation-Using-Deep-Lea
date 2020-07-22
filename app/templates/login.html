@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title></title>
+
+    <!-- Font Icon -->
+    <link rel="stylesheet" href="static/fonts/material-icon/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" href="static/js/signup/jquery-ui/jquery-ui.min.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="static/css/login-style.css">
+</head>
+<body>
+        <center><img src="static/img/home-logo.png" alt=""></center>
+    <div class="main">
+
+        <section class="signup">
+
+            <div class="container">
+
+                <div class="signup-content">
+                    <form method="POST" id="signup-form" class="signup-form">
+
+                      {% if invalid %}
+                      <div class="new-message-box">
+                          <div class="new-message-box-alert">
+                              <div class="info-tab tip-icon-alert" title="error"><i></i></div>
+                                <div class="tip-box-alert">
+                                    <p>Incorrect User ID or Password!!
+                                </div>
+                              </div>
+                      </div>
+                      {% endif %}
+
+                            <div class="form-group">
+                                <label for="userid">User ID</label>
+                                <input type="text" class="form-input" name="userid" id="userid" />
+                            </div>
+                            <div class="form-group">
+                              <label for="password">Password</label>
+                              <input type="password" class="form-input" name="password" id="password"/>
+                            </div>
+
+                        <div class="form-group">
+                            <input type="submit" name="login" id="login" class="form-submit" value="Login"/>
+                            <br><br>
+
+                            <br><br>
+                            <a href="{{ url_for('signup')}}">NEW USER??..SIGN UP</a>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- JS -->
+    <script src="static/js/signup/jquery/jquery.min.js"></script>
+    <script src="static/js/signup/jquery-ui/jquery-ui.min.js"></script>
+    <script src="static/js/signup/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="static/js/signup/jquery-validation/dist/additional-methods.min.js"></script>
+    <script src="static/js/signup.js"></script>
+</body>
+</html>

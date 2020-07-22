@@ -1,0 +1,304 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta content="" name="description" />
+    <meta content="webthemez" name="author" />
+    <title>Food Identification</title>
+    <!-- Bootstrap Styles-->
+    <link href="static/css/bootstrap.css" rel="stylesheet" />
+    <!-- FontAwesome Styles-->
+    <link href="static/css/font-awesome.css" rel="stylesheet" />
+    <!-- Morris Chart Styles-->
+    <link href="static/js/morris/morris-0.4.3.min.css" rel="stylesheet" />
+    <!-- Custom Styles-->
+    <link href="static/css/custom-styles.css" rel="stylesheet" />
+      <link href="static/css/imageStyle.css" rel="stylesheet" />
+    <!-- Google Fonts-->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css' />
+    <link rel="stylesheet" href="static/js/Lightweight-Chart/cssCharts.css">
+</head>
+
+<body>
+    <div id="wrapper">
+        <nav class="navbar navbar-default top-navbar" role="navigation">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".sidebar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{{url_for('dashboard')}}"><center><img src="static/img/small-logo.png" height="40" alt="logo"></center></a>
+
+		              <div id="sideNav" href="">
+		                  <i class="fa fa-bars icon"></i>
+		                  </div>
+            </div>
+
+
+            <ul class="nav navbar-top-links navbar-right">
+
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false">
+                        <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
+                    </a>
+                    <ul class="dropdown-menu dropdown-user">
+                        <li><a href="{{url_for('update_profile')}}"><i class="fa fa-user fa-fw"></i> User Profile</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('change_pwd')}}"><i class="fa fa-gear fa-fw"></i> Change Password</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li><a href="{{url_for('login')}}"><i class="fa fa-sign-out fa-fw"></i> Logout</a>
+                        </li>
+                    </ul>
+                    <!-- /.dropdown-user -->
+                </li>
+                <!-- /.dropdown -->
+            </ul>
+        </nav>
+        <!--/. NAV TOP  -->
+         <nav class="navbar-default navbar-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav" id="main-menu">
+
+                    <li>
+                        <a href="{{url_for('dashboard')}}"><i class="fa fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('calorie_tracker')}}"><i  class="fa fa-calendar"></i> Calorie Tracker</a>
+                    </li>
+                    <li>
+                        <a href="{{url_for('food_diary')}}"><i  class="fa fa-calendar"></i> Food Diary</a>
+                    </li>
+                </ul>
+
+            </div>
+
+        </nav> -->
+        <!-- /. NAV SIDE  -->
+
+		<div id="page-wrapper">
+		  <div class="header">
+                        <h1 class="page-header">
+                            Dashboard <small>Welcome {{current_user.name}}</small>
+                        </h1>
+
+		</div>
+            <div id="page-inner">
+
+              <div class="row">
+                        <div class="col-xs-12">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">
+                                    <div class="card-title">
+                                        <div class="title">Upload food image:</div>
+                                    </div>
+                                </div>
+                                <div class="panel-body">
+                                    <form method="post" enctype=multipart/form-data>
+                                        <div class="form-group">
+                                            <label for="exampleInputFile">File input</label>
+                                            <input type="file" id="exampleInputFile" name="file"  accept="image/*">
+
+                                        </div>
+                                        <button type="submit" class="btn btn-default">Upload Image</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                <!-- /. ROW  -->
+                {% if image_link %}
+                <div class="row">
+                  <div class="col-xs-6 col-md-4">
+                      <div class="panel panel-default" id="col1">
+                          <div class="panel-heading">
+                              Food Image
+                          </div>
+                          <div class="panel-body" align="center">
+                              <img src ="{{image_link}}" alt="food image" height="200px" width="200px">
+                          </div>
+                      </div>
+                  </div>
+                    <!-- <div class="col-md-8 col-sm-12 col-xs-12"> -->
+                    <div class="col-xs-6 col-md-4">
+                        <div class="panel panel-default" id="col2">
+
+							                   <div class="panel-heading">
+							                             Food Results
+						                     </div>
+						            <div class="panel-body">
+                          <h1>{{label}}</h1>
+                          <div class="panel-body" align="center">
+                            <span><img src="static/ingr_images/calorie.png" height="90px" width="90px" align="center" alt="calorie image"></span>
+                            <h1>{{calorie}} Calories</h1>
+                                <!-- <span class="percent"> {{calorie}}%</span> -->
+                          </div>
+						           </div>
+                    </div>
+                      </div>
+
+
+                </div>
+				<div class="row">
+				<div class="col-md-12">
+
+					</div>
+				</div>
+
+        <!-- /. ROW  -->
+        <div class="panel-heading">
+            <div class="card-title">
+                <div class="title"><h1>Ingredients</h1></div>
+            </div>
+        </div>
+
+        <br>
+
+
+
+                <div class="row">
+
+                  {% for d in ingr_data%}
+                  <div class="col-md-3 col-sm-12 col-xs-12">
+                      <div class="board">
+                        <div class="panel panel-primary">
+                          <div class="number">
+                            <h3>
+                                <h3>{{d.ingr_id}}</h3>
+                                <small>{{((d.ingr_value/ingr_data[0].ingr_value)*100) | round(1, 'floor')}} %</small>
+                            </h3>
+                          </div>
+                          <div class="icon">
+                            <!-- <i class="fa fa-eye fa-5x red"></i> -->
+                            <!-- <i class="fa fa-egg fa-5x red"></i> -->
+                            <img id="ingr" src="static/ingr_images/{{d.ingr_id}}.jpg" height="80px" width="80px" alt="no">
+                          </div>
+
+                      </div>
+                    </div>
+                </div>
+
+                  {% endfor %}
+                </div>
+
+                <div class="panel-heading">
+                    <div class="card-title">
+                        <div class="title"><h1>Nutrients</h1></div>
+                    </div>
+                </div>
+
+
+                <div class="row">
+                  {% for n in nut_data%}
+                  <div class="col-xs-6 col-md-3">
+                    <div class="panel panel-default">
+                      <div class="panel-body easypiechart-panel">
+                        <h4>{{n.nut_id}}</h4>
+                        <div class="easypiechart" data-percent="{{n.nut_value*100}}" ><span class="percent"> {{((n.nut_value/nut_data[0].nut_value)*100) | round(1, 'floor')}}%</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {% endfor %}
+                </div>
+
+				<div class="row">
+          <div class="panel-heading">
+							<h1>Food Attributes</h1>
+						</div>
+            {% for item in attr_data %}
+            <div class="col-xs-2 col_item">
+            <div class="capsule_textbox">
+              <h3>{{item.attr_id}}</h3>
+              <h4>{{(item.attr_value/attr_data[0].attr_value) | round(2, 'floor')}}</h4>
+            </div>
+              </div>
+            {% endfor %}
+            <!-- <div class="col-md-12">
+					</div> -->
+				</div>
+
+        <div class="row">
+             <div class="col-md-12">
+                 <div class="panel panel-default">
+                     <div class="panel-heading">
+                        <h1> Healthy Food Recipes</h1>
+                     </div>
+                     <div class="panel-body">
+                         <div class="panel-group" id="accordion">
+                     {% for r in recipes %}
+                     <div class="panel panel-default">
+                         <div class="panel-heading">
+                             <h4 class="panel-title">
+                                 <a data-toggle="collapse" data-parent="#accordion" href=#{{r.title}}>{{r.title}}</a>
+                             </h4>
+                         </div>
+                         <div id={{r.title}} class="panel-collapse collapse" style="height: auto;">
+                             <div class="panel-body">
+                                <a href={{r.link}}>{{r.link}}</a>
+                             </div>
+                         </div>
+                     </div>
+                     {% endfor %}
+                   </div>
+                 </div>
+                 </div>
+             </div>
+         </div>
+
+
+                <!-- /. ROW  -->
+                <!--/.row-->
+
+
+                <br>
+{% endif %}
+<!-- endif for label -->
+            </div>
+            <!-- /. PAGE INNER  -->
+        </div>
+        <!-- /. PAGE WRAPPER  -->
+    </div>
+    <!-- /. WRAPPER  -->
+    <!-- JS Scripts-->
+    <!-- jQuery Js -->
+    <script src="static/js/jquery-1.10.2.js"></script>
+    <!-- Bootstrap Js -->
+    <script src="static/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/morris.js/0.5.1/morris.css">
+    <!-- Metis Menu Js -->
+    <script src="static/js/jquery.metisMenu.js"></script>
+    <!-- Morris Chart Js -->
+    <script src="static/js/morris/raphael-2.1.0.min.js"></script>
+    <script src="static/js/morris/morris.js"></script>
+
+
+    <script src="static/js/attributes.js"></script>
+
+
+	<script src="static/js/easypiechart.js"></script>
+	<script src="static/js/easypiechart-data.js"></script>
+
+	 <script src="static/js/Lightweight-Chart/jquery.chart.js"></script>
+
+    <!-- Custom Js -->
+    <script src="static/js/custom-scripts.js"></script>
+
+
+    <!-- Chart Js -->
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js'></script>
+    <!-- <script type="text/javascript" src="static/js/Chart.min.js"></script> -->
+    <script type="text/javascript" src="static/js/chartjs.js"></script>
+
+
+</body>
+
+</html>
